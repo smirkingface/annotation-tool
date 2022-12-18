@@ -16,7 +16,7 @@ del python.zip
 REM Pull annotation tool repository on top of current directory
 .\git\bin\git init . 
 .\git\bin\git remote add origin https://github.com/smirkingface/annotation-tool
-.\git\bin\git pull origin main
+.\git\bin\git checkout main -f
 
 REM Install pip and install python requirements
 powershell Invoke-WebRequest -Uri https://bootstrap.pypa.io/get-pip.py -OutFile get-pip.py
