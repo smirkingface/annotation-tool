@@ -1,0 +1,6 @@
+pyyaml
+numpy
+pyqt5
+pandas
+scikit-learn
+pyarrow

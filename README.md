@@ -1,0 +1,2 @@
+# SmirkingFace image annotation tool
+This tool is currently work-in-progress and not yet suitable for general use. It is being tested on the SmirkingFace dataset and will be further developed to work on any dataset in the future.
