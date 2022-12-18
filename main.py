@@ -505,7 +505,7 @@ class AnnotationWidget(QWidget):
 if __name__ == '__main__':
     settings = QSettings('SmirkingFace', 'Annotator')
     if settings.value('id') == None:
-        settings.setValue('id', random.randint(0,10000000000))
+        settings.setValue('id', random.randint(0,1000000000))
     
     os.makedirs('./output', exist_ok=True)
     os.makedirs('./storage', exist_ok=True)
