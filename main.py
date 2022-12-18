@@ -330,7 +330,6 @@ class AnnotationWidget(QWidget):
         
             
     def next_balanced(self):
-    
         sum_score = 0
         for c in self.classifiers:
             c.train()
