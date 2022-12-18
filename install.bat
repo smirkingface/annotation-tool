@@ -16,6 +16,7 @@ del python.zip
 REM Pull annotation tool repository on top of current directory
 .\git\bin\git init . 
 .\git\bin\git remote add origin https://github.com/smirkingface/annotation-tool
+.\git\bin\git fetch origin main
 .\git\bin\git checkout main -f
 
 REM Install pip and install python requirements
