@@ -344,6 +344,7 @@ class AnnotationWidget(QWidget):
                         if w.size == 0:
                             continue
 
+                        # TODO: May need some improvement
                         sum_score += (np.clip(probs[:,i], 0.0, 0.8)) * -(1/counts[w])
                 elif isinstance(c, SetClassifier):
                     pos_counts = c.storage.y.sum(axis=0)
@@ -351,15 +352,15 @@ class AnnotationWidget(QWidget):
                     
                     y, probs = c.predict_many(self.clips)
                     for i in range(probs.shape[1]):
-                        sum_score += (np.clip(probs[:,i], 0.0, 0.8)) * -(1/pos_counts[i])
-                        sum_score += (np.clip(1-probs[:,i], 0.0, 0.8)) * -(1/neg_counts[i])
+                        sum_score += (np.clip(probs[:,i], 0.0, 0.8)) * -(1/pos_counts[i]) * (probs[:,i]>0.5)
+                        sum_score += (np.clip(1-probs[:,i], 0.0, 0.8)) * -(1/neg_counts[i]) * (probs[:,i]<=0.5)
                 elif isinstance(c, BoolClassifier):
                     pos_count = c.storage.y.sum()
                     neg_count = c.storage.y.shape[0] - pos_count
                     
                     y, probs = c.predict_many(self.clips)
-                    sum_score += (np.clip(probs, 0.0, 0.8)) * -(1/pos_count)
-                    sum_score += (np.clip(1-probs, 0.0, 0.8)) * -(1/neg_count)
+                    sum_score += (np.clip(probs, 0.0, 0.8)) * -(1/pos_count) * (probs>0.5)
+                    sum_score += (np.clip(1-probs, 0.0, 0.8)) * -(1/neg_count) * (probs<=0.5)
             except NotFittedError:
                 pass
                 
